@@ -7,7 +7,7 @@ public class player extends Actor
     GifImage Run_a = new GifImage("run_a.gif");
     GifImage Run_s = new GifImage("run_s.gif");
     GifImage Run_d = new GifImage("run_d.gif");
-    GifImage idle = new GifImage("idle.gif");
+    GifImage idle = new GifImage("idle.png");
     GreenfootImage curAnim;
     int vecX = 0;
     int vecY = 0;

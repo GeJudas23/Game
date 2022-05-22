@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class pvp extends World
 {
 
-    GifImage bg = new GifImage("pvp.gif");
     GreenfootImage curAnim;
     /**
      * Constructor for objects of class pvp.
@@ -18,14 +17,14 @@ public class pvp extends World
     public pvp()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(512, 512, 1); 
+        super(480, 480, 1); 
     }
 
     public void act(){
-        curAnim = bg.getCurrentImage();
-        curAnim.scale(512, 512);
+        curAnim = new GreenfootImage("died.jfif");
+        curAnim.scale(480, 480);
         setBackground(curAnim);
-
+        showText("PRESS SPACE TO RESTART", 240, 400);
         if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new MyWorld());
 

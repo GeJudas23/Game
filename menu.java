@@ -8,20 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class menu extends World
 {
 
-    GifImage bg = new GifImage("menu.gif");
     GreenfootImage curAnim;
 
     public menu()
     {    
-        super(512, 512, 1);
+        super(480, 480, 1);
 
         prepare();
     }
 
     public void act(){
-        curAnim = bg.getCurrentImage();
-        curAnim.scale(512, 512);
+        curAnim = new GreenfootImage("menu.png");
+        curAnim.scale(480, 480);
         setBackground(curAnim);
+        showText("PRESS SPACE TO PLAY", 240, 400);
+
 
         if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new MyWorld());
