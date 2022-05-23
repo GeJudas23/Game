@@ -26,7 +26,7 @@ public class pvp extends World
         setBackground(curAnim);
         showText("PRESS SPACE TO RESTART", 240, 400);
         if(Greenfoot.isKeyDown("space")){
-            Greenfoot.setWorld(new MyWorld());
+            Greenfoot.setWorld(new world_1());
 
         }
     }

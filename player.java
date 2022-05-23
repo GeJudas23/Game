@@ -11,6 +11,7 @@ public class player extends Actor
     GreenfootImage curAnim;
     int vecX = 0;
     int vecY = 0;
+    int world = 1;
     /**
      * Act - do whatever the player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,6 +22,7 @@ public class player extends Actor
         setImage(curAnim);
         if(isTouching(npc.class)){Greenfoot.setWorld(new pvp());
         }
+        swichWorld();
     }
     
     public void controller()
@@ -48,6 +50,9 @@ public class player extends Actor
              vecX = 0;
         } 
         setLocation(getX()+vecX, getY()+vecY);
+    }
+    
+    public void swichWorld(){
     }
     
 }

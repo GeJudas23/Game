@@ -25,7 +25,7 @@ public class menu extends World
 
 
         if(Greenfoot.isKeyDown("space")){
-            Greenfoot.setWorld(new MyWorld());
+            Greenfoot.setWorld(new world_1());
 
         }
     }

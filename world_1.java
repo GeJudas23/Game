@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MyWorld extends World
+public class world_1 extends World
 {
     
     
@@ -14,26 +14,38 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public MyWorld()
+    player player = new player();
+ 
+    public world_1()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(480, 480, 1); 
         prepare();
+        act();
 
     }
+    public void act(){
+            if(player.getX() == 470){
+                Greenfoot.setWorld(new world_3());
+            }
+            if(player.getY() == 10){
+                Greenfoot.setWorld(new world_2());
+            }
+    
+    }
+
     
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
-    {
-        player player = new player();
+    {   npc npc = new npc();
         addObject(player,272,189);
-        npc npc = new npc();
         addObject(npc,438,225);
-        player.setLocation(54,255);
         npc.setLocation(242,96);
         player.setLocation(120,250);
+        npc.setLocation(243,93);
+        removeObject(npc);
     }
 }
