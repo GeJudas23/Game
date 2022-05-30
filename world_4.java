@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class world_4 extends World
 {
-    player player = new player();
+
     /**
      * Constructor for objects of class world_4.
      * 
@@ -18,19 +18,6 @@ public class world_4 extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(480, 480, 1); 
         prepare();
-        act();
-    }
-    public void act(){
-            if(player.getX() == 10){
-                Greenfoot.setWorld(new world_3());
-
-            }
-            if(player.getY() == 470){
-                Greenfoot.setWorld(new world_2());
-
-            }
-            if((player.getX()==433)||(player.getY()==307)){Greenfoot.setWorld(new world_5());
-            }
     }
     
     /**
@@ -39,11 +26,19 @@ public class world_4 extends World
      */
     private void prepare()
     {
-
-        addObject(player,212,236);
         wrata wrata = new wrata();
-        addObject(wrata,433,307);
-        npc npc = new npc();
-        addObject(npc,243,187);
+        addObject(wrata,433,309);
+        
+        collider collider = new collider(10, 70);
+        addObject(collider,307,243);
+        collider.setLocation(2,460);
+        
+        collider collider2 = new collider(10, 150);
+        addObject(collider2,236,246);
+        collider2.setLocation(5,40);
+        
+        collider collider3 = new collider(400, 10);
+        addObject(collider3,277,296);
+        collider3.setLocation(300,475);
     }
 }

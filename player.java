@@ -1,58 +1,56 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List;
 
+/**
+ * Write a description of class player here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
 public class player extends Actor
 {
-    GifImage Run_w = new GifImage("run_w.gif");
-    GifImage Run_a = new GifImage("run_a.gif");
-    GifImage Run_s = new GifImage("run_s.gif");
-    GifImage Run_d = new GifImage("run_d.gif");
-    GifImage idle = new GifImage("idle.png");
-    GreenfootImage curAnim;
-    int vecX = 0;
-    int vecY = 0;
-    int world = 1;
     /**
      * Act - do whatever the player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        controller();
-        setImage(curAnim);
-        if(isTouching(npc.class)){Greenfoot.setWorld(new pvp());
-        }
-        swichWorld();
+        // Add your action code here.
     }
-    
-    public void controller()
-    {   curAnim = idle.getCurrentImage();
-        if(Greenfoot.isKeyDown("w") || Greenfoot.isKeyDown("ц")){
-            vecY = -1;
-            curAnim = Run_w.getCurrentImage();
-        }
-        if(Greenfoot.isKeyDown("a") || Greenfoot.isKeyDown("ф")){
-            vecX = -1;
-            curAnim = Run_a.getCurrentImage();
-        }
-        if(Greenfoot.isKeyDown("s") || Greenfoot.isKeyDown("ы")){
-            vecY = 1;
-            curAnim = Run_s.getCurrentImage();
-        }
-        if(Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("в")){
-            vecX = 1;
-            curAnim = Run_d.getCurrentImage();
-        }
-        if(!Greenfoot.isKeyDown("s")  &&  !Greenfoot.isKeyDown("w") && !Greenfoot.isKeyDown("ц") && !Greenfoot.isKeyDown("ы") ){
-             vecY=0;
-        }
-        if(!Greenfoot.isKeyDown("a")  &&  !Greenfoot.isKeyDown("d") && !Greenfoot.isKeyDown("ф")  &&  !Greenfoot.isKeyDown("в") ){
-             vecX = 0;
-        } 
-        setLocation(getX()+vecX, getY()+vecY);
+    public void changeLevel(int world_id,int px,int py,boolean plr){  
+        World nextLevel;
+        nextLevel = new world_1();
+        if(world_id == 1){nextLevel = new world_1();}
+        if(world_id == 2){nextLevel = new world_2();}
+        if(world_id == 3){nextLevel = new world_3();}
+        if(world_id == 4){nextLevel = new world_4();}
+        if(world_id == 5){nextLevel = new world_5();}
+        if(plr == true){girl girl = new girl(); nextLevel.addObject(girl,px,py);}
+        else{cat cat = new cat(); nextLevel.addObject(cat,px,py);}
+        Greenfoot.setWorld(nextLevel);
     }
-    
-    public void swichWorld(){
+    public int getWorldId(){
+        World world = getWorld();
+        Color color = world.getColorAt(479,1);
+        int r = color.getRed();
+        int g = color.getGreen();
+        int b = color.getBlue();
+        int id = r+g+b;
+        if(id==512){id = 1;}
+        if(id==238){id = 2;}
+        if(id==710){id = 3;}
+        if(id==319){id = 4;}
+        if(id==199){id = 5;}
+        return id;
     }
-    
+    public void switcher(int world_id,int px,int py,boolean plr){
+
+        if((world_id == 1)&(px>477)){changeLevel(3,5,py,plr);}
+        if((world_id == 1)&(py<3)){changeLevel(2,px,475,plr);}
+        if((world_id == 2)&(px>477)){changeLevel(4,5,py,plr);}
+        if((world_id == 2)&(py>477)){changeLevel(1,px,5,plr);}
+        if((world_id == 3)&(px<3)){changeLevel(1,475,py,plr);}
+        if((world_id == 3)&(py<3)){changeLevel(4,px,475,plr);}
+        if((world_id == 4)&(px<3)){changeLevel(2,475,py,plr);}
+        if((world_id == 4)&(py>477)){changeLevel(3,px,5,plr);}
+    }
 }
