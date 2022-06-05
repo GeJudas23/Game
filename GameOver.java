@@ -17,5 +17,11 @@ public class GameOver extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(480, 480, 1); 
+        showText("PRESS 'SPACE' TO TRY AGAIN", 240, 400);
+    }
+    public void act(){
+    if(Greenfoot.isKeyDown("space")){
+         Greenfoot.setWorld(new main_menu());
+        }
     }
 }

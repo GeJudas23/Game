@@ -19,7 +19,8 @@ public class world_4 extends World
         super(480, 480, 1); 
         prepare();
     }
-    
+    public void act(){
+    }
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.

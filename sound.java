@@ -7,21 +7,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class sound
-{
+{   GreenfootSound test = new GreenfootSound("black.wav");
     private GreenfootSound music;
     public sound(int i)
     {   if(i==1){ music = new GreenfootSound("black.wav");}
-        if(i==2){ music = new GreenfootSound("MT.mp3");}
-        if(i==3){ music = new GreenfootSound("cat.mp3");}
-        if(i==4){ music = new GreenfootSound("girl.mp3");}
-        if(i==5){ music = new GreenfootSound("magic.mp3");}
-        if(i==6){ music = new GreenfootSound("start.mp3");}
-        if(i==7){ music = new GreenfootSound("died.mp3");}
-        if(i==8){ music = new GreenfootSound("getdamage.mp3");}
-        if(i==8){ music = new GreenfootSound("hit.mp3");}
+        if(i==2){ music = new GreenfootSound("MT.wav");}
+        if(i==3){ music = new GreenfootSound("cat.wav");}
+        if(i==4){ music = new GreenfootSound("girl.wav");}
+        if(i==5){ music = new GreenfootSound("win.wav");}
+        if(i==6){ music = new GreenfootSound("proton.wav");}
         music.setVolume(100); 
     }
-
+    public void act(){
+        test.play();
+    
+    }
     public void play(int sound){
         try
         {
@@ -41,7 +41,8 @@ public class sound
     public void pause(){        
         music.pause();
     }
-    public void playLoop(){        
+    public void playLoop(int sound){
+        music.setVolume(sound);
         music.playLoop();
     }
     public void setVolume(int volume){        
@@ -51,4 +52,5 @@ public class sound
     public boolean isPlaying(){
         return music.isPlaying();
     }
+    
 }

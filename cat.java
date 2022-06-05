@@ -13,6 +13,7 @@ public class cat extends player
     GifImage Run_d = new GifImage("cat/run_d.gif");
     GifImage idle = new GifImage("cat/idle.png");
     GreenfootImage curAnim;
+    boolean plr = false;
     int vecX = 0;
     int vecY = 0;
     int sprint = 0;
@@ -20,15 +21,22 @@ public class cat extends player
      * Act - do whatever the cat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
+    public void act()   
     {
         controller(Run_w,Run_a,Run_s,Run_d);
         setImage(curAnim);
         int world_id = getWorldId();
-        switcher(world_id,getX(),getY(),false);
+        switcher(world_id,getX(),getY(),plr);
+        if(isTouching(enemy_npc.class)||isTouching(girl_npc.class)){
+            World world = getWorld();
+            world_5 myworld = (world_5) world;
+            myworld.sound1.stop();
+            startBattle(getWorldId(),plr,true);
+        }
+        if(Greenfoot.getRandomNumber(1000)==1){startBattle(getWorldId(),plr,false);}
         if(isTouching(wrata.class)){
-            if(world_id == 4){changeLevel(5,240,240,false);}
-            if(world_id == 5){changeLevel(4,240,240,false);}
+            if(world_id == 4){changeLevel(5,240,400,plr);}
+            if(world_id == 5){changeLevel(4,240,240,plr);}
         }
     }   
 

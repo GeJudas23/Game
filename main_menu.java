@@ -9,31 +9,35 @@ import greenfoot.GreenfootImage;
 public class main_menu extends World
 {   private GreenfootImage start;
     private GreenfootImage black;
+    sound sound = new sound(2);
     sound cat_sound = new sound(3);
     sound girl_sound = new sound(4);
     int count = 0;
     boolean pers = false;
+    boolean flag = false;
+    player cat = new cat();
+    player girl = new girl();
     public main_menu()
     {   
         super(480, 480, 1);
         start = new GreenfootImage("menu/start.png");
         black = new GreenfootImage("menu/black.png");
         showText("PRESS 'X' TO PLAY BY CAT", 240, 400);
-        showText("PRESS 'Z' TO PLAY BY GIRL", 240, 440);
+        showText("PRESS 'Z' TO PLAY BY LADY", 240, 440);
         setBackground(start);
     }
     public void act(){
         if (count == 0){
             if(Greenfoot.isKeyDown("x") || Greenfoot.isKeyDown("ч")){
                 pers = false;
-                //cat_sound.play(100);
+                cat_sound.play(100);
                 count++;
                 showText(" ", 240, 400);
                 showText(" ", 240, 440);
             }
             if(Greenfoot.isKeyDown("z") || Greenfoot.isKeyDown("я")){
                 pers = true;
-                //girl_sound.play(100);
+                girl_sound.play(100);
                 count++;
                 showText(" ", 240, 400);
                 showText(" ", 240, 440);
@@ -42,19 +46,23 @@ public class main_menu extends World
         if(count == 1){
             setBackground(black);
             if(pers){
-                showText("story about girl", 240, 240);
+                showText("My cat was kidnapped", 240, 240);
+                showText("I need to save it", 240, 280);
             }
             else{
-                showText("story about cat", 240, 240);
+                showText("My lady was kidnapped", 240, 240);
+                showText("I need to save her", 240, 280);
             }
             if(Greenfoot.isKeyDown("space")){
+                //sound.playLoop(100);
                 changeLevel();
+                flag = true;
             }
         }
+        
         }
     public void changeLevel(){
-        player cat = new cat();
-        player girl = new girl();
+
         World nextLevel = new world_1();
         if(pers){
             nextLevel.addObject(girl, 240, 240);

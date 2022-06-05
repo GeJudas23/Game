@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=HappyEnd
+comment1.params=
+comment1.target=HappyEnd()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=slide
+comment3.target=void\ showSlide(int)
+numComments=4

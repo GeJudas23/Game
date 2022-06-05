@@ -12,8 +12,13 @@ public class girl_npc extends npc
      * Act - do whatever the girl_npc wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public girl_npc(){
+        GreenfootImage img = new GreenfootImage("girl/idle.png");
+        setImage(img);
+    }
     public void act()
     {
-        // Add your action code here.
+        
+        
     }
 }

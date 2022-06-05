@@ -24,11 +24,10 @@ public class world_2 extends World
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
+    public void act(){
+    }
     private void prepare()
     {
-        skeleton skeleton = new skeleton();
-        addObject(skeleton,310,216);
-
         collider collider = new collider(200, 70);
         addObject(collider,307,243);
         collider.setLocation(380,460);

@@ -8,16 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class world_5 extends World
 {
-    sound sound = new sound(1);
+    
     /**
      * Constructor for objects of class world_5.
      * 
      */
+    public sound sound1 = new sound(1);
+    public sound sound2 = new sound(2);
     public world_5()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(480, 480, 1);
-        if(!sound.isPlaying()){sound.play(100);}
+        
         prepare();
     }
 
@@ -25,19 +27,23 @@ public class world_5 extends World
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
+    public void act(){
+        if(!sound1.isPlaying()){sound1.playLoop(100);}
+        if(sound2.isPlaying()){sound2.stop();}
+    }
     private void prepare()
     {
         wrata wrata = new wrata();
         addObject(wrata,59,56);
-        skeleton skeleton = new skeleton();
+        npc skeleton = new enemy_npc();
         addObject(skeleton,236,133);
-        skeleton skeleton2 = new skeleton();
+        npc skeleton2 = new enemy_npc();
         addObject(skeleton2,332,206);
-        skeleton skeleton3 = new skeleton();
+        npc skeleton3 = new enemy_npc();
         addObject(skeleton3,146,208);
-        skeleton skeleton4 = new skeleton();
+        npc skeleton4 = new enemy_npc();
         addObject(skeleton4,279,288);
-        skeleton skeleton5 = new skeleton();
+        npc skeleton5 = new enemy_npc();
         addObject(skeleton5,191,288);
         skeleton4.setLocation(302,300);
         skeleton5.setLocation(168,292);
