@@ -9,14 +9,14 @@ import greenfoot.GreenfootImage;
 public class main_menu extends World
 {   private GreenfootImage start;
     private GreenfootImage black;
-    sound sound = new sound(2);
-    sound cat_sound = new sound(3);
-    sound girl_sound = new sound(4);
+    GifImage WASD = new GifImage("WASD.gif");
+    GreenfootImage curAnim;
     int count = 0;
     boolean pers = false;
     boolean flag = false;
     player cat = new cat();
     player girl = new girl();
+    public String lastKeyPressed = "";
     public main_menu()
     {   
         super(480, 480, 1);
@@ -27,17 +27,19 @@ public class main_menu extends World
         setBackground(start);
     }
     public void act(){
+        String myKey = Greenfoot.getKey();
+        if (myKey != null) lastKeyPressed = myKey;
         if (count == 0){
             if(Greenfoot.isKeyDown("x") || Greenfoot.isKeyDown("ч")){
                 pers = false;
-                cat_sound.play(100);
+                sound.play(3);
                 count++;
                 showText(" ", 240, 400);
                 showText(" ", 240, 440);
             }
             if(Greenfoot.isKeyDown("z") || Greenfoot.isKeyDown("я")){
                 pers = true;
-                girl_sound.play(100);
+                sound.play(4);
                 count++;
                 showText(" ", 240, 400);
                 showText(" ", 240, 440);
@@ -45,6 +47,7 @@ public class main_menu extends World
         }
         if(count == 1){
             setBackground(black);
+            showText("PRESS 'SPACE' TO CONTINUE", 240, 440);
             if(pers){
                 showText("My cat was kidnapped", 240, 240);
                 showText("I need to save it", 240, 280);
@@ -53,7 +56,19 @@ public class main_menu extends World
                 showText("My lady was kidnapped", 240, 240);
                 showText("I need to save her", 240, 280);
             }
-            if(Greenfoot.isKeyDown("space")){
+            if("space".equals(lastKeyPressed)){
+                //sound.playLoop(100);
+                
+                lastKeyPressed = null;
+                showText(" ", 240, 440);
+                showText(" ", 240, 240);
+                showText(" ", 240, 280);
+                count++;
+            }
+        }
+        if (count == 2){
+            setBackground(WASD.getCurrentImage());
+            if("space".equals(lastKeyPressed)){
                 //sound.playLoop(100);
                 changeLevel();
                 flag = true;

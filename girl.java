@@ -27,10 +27,7 @@ public class girl extends player
         setImage(curAnim);
         int world_id = getWorldId();
         switcher(world_id,getX(),getY(),plr);
-        if(isTouching(enemy_npc.class)){
-            World world = getWorld();
-            world_5 myworld = (world_5) world;
-            myworld.sound1.stop();
+        if(isTouching(enemy_npc.class)||isTouching(cat_npc.class)){
             startBattle(getWorldId(),plr,true);
         }
         if(Greenfoot.getRandomNumber(2000)==1){startBattle(getWorldId(),plr,false);}

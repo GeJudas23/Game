@@ -6,7 +6,6 @@ public class HappyEnd extends World
 {   private int slide = 1;
     public String lastKeyPressed = "";
     static final Color TRANS = new Color(0, 0, 0, 0);
-    sound sound = new sound(5);
     public HappyEnd()
     {
         super(480, 480, 1, false); // unbounded world
@@ -14,7 +13,7 @@ public class HappyEnd extends World
         
     }
     public void act(){
-        if(!sound.isPlaying()){sound.play(100);}
+        if(!sound.isPlaying(5)){sound.play(5);}
         String myKey = Greenfoot.getKey();
         if (myKey != null) lastKeyPressed = myKey;
         if("space".equals(lastKeyPressed)){
@@ -58,7 +57,7 @@ public class HappyEnd extends World
         slide++;
         }
         else if(slide == 4){
-        sound.stop();
+        sound.stop(5);
         Greenfoot.stop();
         }
         int h = 40;

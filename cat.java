@@ -28,9 +28,7 @@ public class cat extends player
         int world_id = getWorldId();
         switcher(world_id,getX(),getY(),plr);
         if(isTouching(enemy_npc.class)||isTouching(girl_npc.class)){
-            World world = getWorld();
-            world_5 myworld = (world_5) world;
-            myworld.sound1.stop();
+            
             startBattle(getWorldId(),plr,true);
         }
         if(Greenfoot.getRandomNumber(1000)==1){startBattle(getWorldId(),plr,false);}

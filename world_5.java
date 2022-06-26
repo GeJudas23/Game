@@ -13,8 +13,7 @@ public class world_5 extends World
      * Constructor for objects of class world_5.
      * 
      */
-    public sound sound1 = new sound(1);
-    public sound sound2 = new sound(2);
+
     public world_5()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -28,8 +27,8 @@ public class world_5 extends World
      * That is: create the initial objects and add them to the world.
      */
     public void act(){
-        if(!sound1.isPlaying()){sound1.playLoop(100);}
-        if(sound2.isPlaying()){sound2.stop();}
+        if(!sound.isPlaying(1)){sound.playLoop(1);}
+        if(sound.isPlaying(2)){sound.stop(2);}
     }
     private void prepare()
     {

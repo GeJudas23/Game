@@ -25,7 +25,6 @@ public class magic extends attack
     
     /** The image index currently displayed */
     private int currentImage = 0;
-    sound sound = new sound(6);
     
     public magic()
     {
